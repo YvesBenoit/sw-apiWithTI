@@ -24,7 +24,7 @@ public class PlanetController {
     }
 
     @GetMapping("/{planetId}")
-    public ResponseEntity<Planet> getPlanet(@PathVariable Long planetId) {
+    public ResponseEntity<Planet> getPlanet(@PathVariable Integer planetId) {
         Optional<Planet> planet = planetRepository.findById(planetId);
 
         if (planet.isPresent()) {
@@ -39,8 +39,8 @@ public class PlanetController {
     }
 
     @PutMapping("/{planetId}")
-    public ResponseEntity<Planet> updatePlanet(@RequestBody Planet planet, @PathVariable Long planetId) {
-        if (planetRepository.existsById(planetId) && planet.getId().equals(planetId)) {
+    public ResponseEntity<Planet> updatePlanet(@RequestBody Planet planet, @PathVariable Integer planetId) {
+        if (planetRepository.existsById( planetId) && planet.getId().equals(planetId)) {
             return ResponseEntity.ok(planetRepository.save(planet));
         } else {
             return ResponseEntity.notFound().build();
@@ -48,7 +48,7 @@ public class PlanetController {
     }
 
     @DeleteMapping("/{planetId}")
-    public ResponseEntity<Planet> deletePlanet(@PathVariable Long planetId) {
+    public ResponseEntity<Planet> deletePlanet(@PathVariable Integer planetId) {
         if (planetRepository.existsById(planetId)) {
             planetRepository.deleteById(planetId);
         }

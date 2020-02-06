@@ -11,7 +11,7 @@ public class Planet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "planet_name")
     private String name;
@@ -51,7 +51,10 @@ public class Planet {
 
     public Planet(String name) { this.name = name; }
 
-    public Long getId() {
+    public Planet(Integer id,String name) { this.id =id;
+    this.name = name; }
+
+    public Integer getId() {
         return id;
     }
 
